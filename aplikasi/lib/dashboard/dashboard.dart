@@ -79,7 +79,7 @@ class DashboardPage extends StatelessWidget {
 
                     // JKoin Card
                     Container(
-                      margin: const EdgeInsets.only(top: 59, bottom: -22),
+                      margin: const EdgeInsets.only(top: 59, bottom: 22),//change it from -22 to 22
                       padding: const EdgeInsets.fromLTRB(22, 13, 22, 13),
                       width: 280,
                       decoration: BoxDecoration(
@@ -374,7 +374,9 @@ class DashboardPage extends StatelessWidget {
 
               // Bottom Navigation Bar
               Container(
-                margin: const EdgeInsets.only(top: -26),
+                margin: const EdgeInsets.only(
+                  top: 26,
+                ), //real -26, i change it to 26 to check the error
                 height: 80, // Adjusted to match the aspect ratio
                 child: Stack(
                   children: [
