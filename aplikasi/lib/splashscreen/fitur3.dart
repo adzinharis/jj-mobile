@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:aplikasi/login/login.dart';
 
 class Fitur3Page extends StatelessWidget {
-  const Fitur3Page({Key? key}) : super(key: key);
+  const Fitur3Page({super.key});
 
   @override
   Widget build(BuildContext context) {

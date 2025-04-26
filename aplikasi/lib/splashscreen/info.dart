@@ -3,7 +3,7 @@ import 'fitur1.dart';
 import 'fitur2.dart';
 import 'fitur3.dart';
 class InfoPage extends StatefulWidget {
-  const InfoPage({Key? key}) : super(key: key);
+  const InfoPage({super.key});
 
   @override
   State<InfoPage> createState() => _InfoPageState();

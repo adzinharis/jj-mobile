@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Fitur2Page extends StatelessWidget {
-  const Fitur2Page({Key? key}) : super(key: key);
+  const Fitur2Page({super.key});
 
   @override
   Widget build(BuildContext context) {
