@@ -1,332 +1,190 @@
 import 'package:flutter/material.dart';
 
-class SignUpRevisi extends StatelessWidget {
-  const SignUpRevisi({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  bool _obscurePassword = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscurePassword = !_obscurePassword;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        constraints: const BoxConstraints(maxWidth: 480),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
-          color: const Color.fromRGBO(182, 255, 145, 1),
-        ),
+    return Scaffold(
+      backgroundColor: const Color(0xFFC5FF9E),
+      body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 39, top: 57),
-              child: Row(
-                children: [
-                  Container(
-                    width: 38,
-                    height: 39,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color.fromRGBO(0, 0, 0, 0.25),
-                          blurRadius: 4,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.network(
-                        'https://cdn.builder.io/api/v1/image/assets/TEMP/7b7f44d75f79b50a62c5c3a1408b811fb6dbf8d4?placeholderIfAbsent=true',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  const Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                margin: const EdgeInsets.only(top: 45),
-                padding: const EdgeInsets.fromLTRB(69, 141, 69, 11),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(100),
-                    bottom: Radius.circular(100),
-                  ),
-                  color: Colors.white,
-                  border: Border.all(
-                    color: const Color.fromRGBO(210, 207, 51, 1),
-                    width: 1,
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                const Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // Name input field
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 18,
-                        vertical: 11,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.white,
-                        border: Border.all(
-                          color: const Color.fromRGBO(32, 161, 9, 1),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          Image.network(
-                            'https://cdn.builder.io/api/v1/image/assets/TEMP/770a2157cd53d2cd4c8afa097a4b380c46668f38?placeholderIfAbsent=true',
-                            width: 24,
-                            height: 24,
-                            fit: BoxFit.contain,
+              ],
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(80),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 150),
+                        TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Nama',
+                            prefixIcon: const Icon(Icons.person_outline),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
                           ),
-                          const SizedBox(width: 19),
-                          const Expanded(
-                            child: Text(
-                              'Kartika Putri',
+                        ),
+                        const SizedBox(height: 15),
+                        TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Email',
+                            prefixIcon: const Icon(Icons.email_outlined),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                          ),
+                        ),
+                        const SizedBox(height: 15),
+                        TextField(
+                          obscureText: _obscurePassword,
+                          decoration: InputDecoration(
+                            hintText: 'Kata Sandi',
+                            prefixIcon: const Icon(Icons.lock_outline),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscurePassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                              onPressed: _togglePasswordVisibility,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                          ),
+                          
+                        ),
+                        const SizedBox(height: 30),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 45,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFFC5FF9E),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text(
+                              'Sign Up',
                               style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                fontFamily: 'Poppins',
                                 color: Colors.black,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-
-                    const SizedBox(height: 30),
-
-                    // Email input field
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 17,
-                        vertical: 11,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.white,
-                        border: Border.all(
-                          color: const Color.fromRGBO(32, 161, 9, 1),
-                          width: 1,
                         ),
-                      ),
-                      child: Row(
-                        children: [
-                          Image.network(
-                            'https://cdn.builder.io/api/v1/image/assets/TEMP/5d898006ad8363ff2d807b2e8f40d5e90aef249f?placeholderIfAbsent=true',
-                            width: 24,
-                            height: 24,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 19),
-                          const Expanded(
-                            child: Text(
-                              'kartikaputri@gmail.com',
-                              style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                              ),
-                              overflow: TextOverflow.ellipsis,
+                        const SizedBox(height: 30),
+                        Row(
+                          children: [
+                            Expanded(child: Divider(color: Colors.grey)),
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: const Text('atau'),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    const SizedBox(height: 30),
-
-                    // Password input field
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 21,
-                        vertical: 11,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.white,
-                        border: Border.all(
-                          color: const Color.fromRGBO(32, 161, 9, 1),
-                          width: 1,
+                            Expanded(child: Divider(color: Colors.grey)),
+                          ],
                         ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Image.network(
-                                'https://cdn.builder.io/api/v1/image/assets/TEMP/bfcd89a66bb478905706a22c66215519a5718a10?placeholderIfAbsent=true',
-                                width: 24,
-                                height: 24,
-                                fit: BoxFit.contain,
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {},
+                              child: Image.asset(
+                                'images/image-for-login/logo-google.png',
+                                width: 40,
+                                height: 40,
                               ),
-                              const SizedBox(width: 13),
-                              const Text(
-                                'Kata Sandi',
+                            ),
+                            const SizedBox(width: 20),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Image.asset(
+                                'images/image-for-login/logo-fb.png',
+                                width: 40,
+                                height: 40,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('Sudah punya akun? '),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                'Login',
                                 style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black,
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Poppins',
                                 ),
                               ),
-                            ],
-                          ),
-                          Image.network(
-                            'https://cdn.builder.io/api/v1/image/assets/TEMP/5c87f1609f5a5159886d578079ffe9b05c2f881d?placeholderIfAbsent=true',
-                            width: 21,
-                            height: 21,
-                            fit: BoxFit.contain,
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    const SizedBox(height: 58),
-
-                    // Sign Up button
-                    TextButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                        backgroundColor: const Color.fromRGBO(182, 255, 145, 1),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 15,
-                          horizontal: 70,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 42),
-
-                    // "atau" divider
-                    Center(
-                      child: Container(
-                        width: 57,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 13,
-                          vertical: 5,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(255, 251, 251, 1),
-                          border: Border.all(
-                            color: const Color.fromRGBO(32, 161, 9, 1),
-                            width: 1,
-                          ),
-                        ),
-                        child: const Text(
-                          'atau',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 26),
-
-                    // Social media login options
-                    Center(
-                      child: SizedBox(
-                        width: 142,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.network(
-                                'https://cdn.builder.io/api/v1/image/assets/TEMP/f416d3052b55effc6ca865c6c181160567ec3890?placeholderIfAbsent=true',
-                                width: 50,
-                                height: 50,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.network(
-                                'https://cdn.builder.io/api/v1/image/assets/TEMP/75f9a99259b7f042c3311804cd94d0cd008ce48a?placeholderIfAbsent=true',
-                                width: 50,
-                                height: 50,
-                                fit: BoxFit.contain,
-                              ),
                             ),
                           ],
                         ),
-                      ),
+                        const SizedBox(height: 20),
+                      ],
                     ),
-
-                    const SizedBox(height: 32),
-
-                    // Login link
-                    Center(
-                      child: RichText(
-                        text: const TextSpan(
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black,
-                          ),
-                          children: [
-                            TextSpan(text: 'Sudah punya akun? '),
-                            TextSpan(
-                              text: 'Login',
-                              style: TextStyle(
-                                color: Color.fromRGBO(24, 119, 242, 1),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 50),
-
-                    // Bottom indicator
-                    Center(
-                      child: Container(
-                        width: 139,
-                        height: 5,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: const Color.fromRGBO(23, 22, 22, 1),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),

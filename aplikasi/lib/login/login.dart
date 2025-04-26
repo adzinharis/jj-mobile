@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:aplikasi/signup/signup.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -44,7 +45,8 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: [
                         CircleAvatar(
-                          backgroundImage: AssetImage('images/image-for-logo/logo.png'),
+                          backgroundImage:
+                              AssetImage('images/image-for-logo/logo.png'),
                           radius: 40,
                           backgroundColor: Colors.white,
                         ),
@@ -83,8 +85,14 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   suffixIcon: IconButton(
                                     icon: _obscureText
-                                        ? Image.asset('images/image-for-login/eye-on.png', width: 24, height: 24)
-                                        : Image.asset('images/image-for-login/eye-off.png', width: 24, height: 24),
+                                        ? Image.asset(
+                                            'images/image-for-login/eye-on.png',
+                                            width: 24,
+                                            height: 24)
+                                        : Image.asset(
+                                            'images/image-for-login/eye-off.png',
+                                            width: 24,
+                                            height: 24),
                                     onPressed: _togglePasswordVisibility,
                                   ),
                                   contentPadding: const EdgeInsets.symmetric(
@@ -121,20 +129,24 @@ class _LoginPageState extends State<LoginPage> {
                                     'Login',
                                     style: TextStyle(
                                       fontFamily: 'Poppins',
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
                               const SizedBox(height: 20),
                               Row(
                                 children: [
-                                  Expanded(child: Divider(color: Colors.grey)),
+                                  Expanded(
+                                      child: Divider(color: Colors.grey)),
                                   Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8),
                                     child: const Text('atau'),
                                   ),
-                                  Expanded(child: Divider(color: Colors.grey)),
+                                  Expanded(
+                                      child: Divider(color: Colors.grey)),
                                 ],
                               ),
                               const SizedBox(height: 20),
@@ -166,12 +178,20 @@ class _LoginPageState extends State<LoginPage> {
                                 children: [
                                   const Text('Belum punya akun? '),
                                   GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SignUpPage()),
+                                      );
+                                    },
                                     child: const Text(
                                       'Sign Up',
                                       style: TextStyle(
                                         color: Colors.blue,
                                         fontWeight: FontWeight.bold,
+                                        fontFamily: 'Poppins',
                                       ),
                                     ),
                                   ),
