@@ -1,239 +1,190 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  bool _obscurePassword = true;
+class _LoginPageState extends State<LoginPage> {
+  bool _obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              color: const Color(0xFFB6FF91),
-            ),
-            width: 480,
-            padding: const EdgeInsets.only(top: 118),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.white,
-                    border: Border.all(
-                      color: const Color(0xFFD2CF33),
-                      width: 1,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: const Color(0xFFC5FF9E),
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 80),
+                  Container(
+                    width: double.infinity,
+                    constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height - 40,
                     ),
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 23),
-                        padding: const EdgeInsets.symmetric(horizontal: 47),
-                        width: double.infinity,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Center(
-                              child: Image.network(
-                                'https://cdn.builder.io/api/v1/image/assets/TEMP/7e32494f99d2fa68fdfb1bae2d8e0a6a780519df?placeholderIfAbsent=true&apiKey=02676d61b03e41ea97c0e9a6486452f7',
-                                width: 120,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            const SizedBox(height: 56),
-                            const Center(
-                              child: Text(
-                                'Login',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50),
+                        topRight: Radius.circular(50),
+                      ),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage('images/image-for-logo/logo.png'),
+                          radius: 40,
+                          backgroundColor: Colors.white,
+                        ),
+                        const SizedBox(height: 40),
+                        const Text(
+                          'Login',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const SizedBox(height: 40),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          child: Column(
+                            children: [
+                              TextField(
+                                decoration: InputDecoration(
+                                  hintText: 'Nama',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 54),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                border: Border.all(
-                                  color: const Color(0xFF20A109),
-                                  width: 2,
+                              const SizedBox(height: 15),
+                              TextField(
+                                obscureText: _obscureText,
+                                decoration: InputDecoration(
+                                  hintText: 'Kata Sandi',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  suffixIcon: IconButton(
+                                    icon: _obscureText
+                                        ? Image.asset('images/image-for-login/eye-on.png', width: 24, height: 24)
+                                        : Image.asset('images/image-for-login/eye-off.png', width: 24, height: 24),
+                                    onPressed: _togglePasswordVisibility,
+                                  ),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
                                 ),
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 64,
-                                vertical: 15,
-                              ),
-                              child: const Text(
-                                'Nama',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 26),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                border: Border.all(
-                                  color: const Color(0xFF20A109),
-                                  width: 2,
-                                ),
-                              ),
-                              padding: const EdgeInsets.only(
-                                left: 65,
-                                right: 27,
-                                top: 12,
-                                bottom: 12,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text(
-                                    'Kata Sandi',
+                              const SizedBox(height: 8),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: TextButton(
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'Lupa sandi?',
                                     style: TextStyle(
-                                      fontFamily: 'Inter',
-                                      fontSize: 16,
+                                      fontSize: 12,
                                       color: Colors.black,
                                     ),
                                   ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              SizedBox(
+                                width: double.infinity,
+                                height: 45,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: const Color(0xFFC5FF9E),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                  ),
+                                  child: const Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                children: [
+                                  Expanded(child: Divider(color: Colors.grey)),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                                    child: const Text('atau'),
+                                  ),
+                                  Expanded(child: Divider(color: Colors.grey)),
+                                ],
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
                                   GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        _obscurePassword = !_obscurePassword;
-                                      });
-                                    },
-                                    child: Image.network(
-                                      'https://cdn.builder.io/api/v1/image/assets/TEMP/39e38baca2795e88a8ac9e0bd6c3a7f317d77d19?placeholderIfAbsent=true&apiKey=02676d61b03e41ea97c0e9a6486452f7',
-                                      width: 30, //24
-                                      height: 30, //24
-                                      fit: BoxFit.contain,
+                                    onTap: () {},
+                                    child: Image.asset(
+                                      'images/image-for-login/logo-google.png',
+                                      width: 40,
+                                      height: 40,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 20),
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Image.asset(
+                                      'images/image-for-login/logo-fb.png',
+                                      width: 40,
+                                      height: 40,
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                            const SizedBox(height: 13),
-                            const Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                'Lupa sandi?',
-                                style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                ),
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text('Belum punya akun? '),
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: const Text(
+                                      'Sign Up',
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 22),
-                      Container(
-                        width: 335,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 70,
-                          vertical: 15,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: const Color(0xFFB6FF91),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black,
-                            ),
+                            ],
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 44),
-                      Container(
-                        width: 57,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 13,
-                          vertical: 5,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFFFBFB),
-                          border: Border.all(
-                            color: const Color(0xFF20A109),
-                            width: 1,
-                          ),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'atau',
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 15,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 26),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.network(
-                            'https://cdn.builder.io/api/v1/image/assets/TEMP/c7bd15c72f9abc76e73fd29443ecced1a9979f4f?placeholderIfAbsent=true&apiKey=02676d61b03e41ea97c0e9a6486452f7',
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.contain,
-                          ),
-                          const SizedBox(width: 20),
-                          Image.network(
-                            'https://cdn.builder.io/api/v1/image/assets/TEMP/19a5c5ada40491f855418e71f45eb5461a620a55?placeholderIfAbsent=true&apiKey=02676d61b03e41ea97c0e9a6486452f7',
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.contain,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 32),
-                      RichText(
-                        text: const TextSpan(
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
-                            color: Colors.black,
-                          ),
-                          children: [
-                            TextSpan(text: 'Belum punya akun? '),
-                            TextSpan(
-                              text: 'Sign Up',
-                              style: TextStyle(color: Color(0xFF153ACF)),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 64),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

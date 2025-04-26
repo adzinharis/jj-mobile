@@ -20,6 +20,13 @@ flutter:
 
   assets:
     - images/image-for-logo/logo.png
+    - images/image-for-fitur1/fitur1.png
+    - images/image-for-fitur2/fitur2.png
+    - images/image-for-fitur3/fitur3.png
+    - images/image-for-login/eye-on.png
+    - images/image-for-login/eye-off.png
+    - images/image-for-login/logo-google.png
+    - images/image-for-login/logo-fb.png
 
   fonts:
     - family: Poppins

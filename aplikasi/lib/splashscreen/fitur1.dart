@@ -1,46 +1,45 @@
 import 'package:flutter/material.dart';
-import 'fitur2.dart';
 
-class Feature1Screen extends StatelessWidget {
+class Fitur1Page extends StatelessWidget {
+  const Fitur1Page({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 35),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Spacer(flex: 2),
           Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.chat_bubble_outline, size: 100, color: Colors.green),
-                SizedBox(height: 30),
-                Text(
-                  "Tetap Terhubung,\nKapan Saja",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.green),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "Kapan saja dan dimana saja, semua terkoneksi.",
-                  textAlign: TextAlign.center,
-                ),
-              ],
+            child: Image.asset(
+              'images/image-for-fitur1/fitur1.png',
+              width: 200, // konsisten
             ),
           ),
-          Positioned(
-            bottom: 20,
-            right: 20,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Feature2Screen()));
-              },
-              child: Icon(Icons.arrow_forward),
-              style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(16),
-                backgroundColor: Colors.green,
-              ),
+          const SizedBox(height: 50),
+          const Text(
+            'Tetap Terhubung,\nKapan Saja',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF4CAF50),
             ),
           ),
+          const SizedBox(height: 16),
+          const Text(
+            'Tanya stok, diskusi pesanan, semua\nlewat satu fitur',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 16,
+              color: Colors.black87,
+            ),
+          ),
+          const Spacer(flex: 3),
+          const SizedBox(height: 30),
         ],
       ),
     );

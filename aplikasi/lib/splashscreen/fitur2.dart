@@ -1,46 +1,45 @@
 import 'package:flutter/material.dart';
-import 'fitur3.dart';
 
-class Feature2Screen extends StatelessWidget {
+class Fitur2Page extends StatelessWidget {
+  const Fitur2Page({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 35),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Spacer(flex: 2),
           Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.card_giftcard, size: 100, color: Colors.green),
-                SizedBox(height: 30),
-                Text(
-                  "Tukar Point dengan Diskon",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.green),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "Dapatkan potongan harga menarik!",
-                  textAlign: TextAlign.center,
-                ),
-              ],
+            child: Image.asset(
+              'images/image-for-fitur2/fitur2.png',
+              width: 200, // sama kayak fitur1
             ),
           ),
-          Positioned(
-            bottom: 20,
-            right: 20,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Feature3Screen()));
-              },
-              child: Icon(Icons.arrow_forward),
-              style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(16),
-                backgroundColor: Colors.green,
-              ),
+          const SizedBox(height: 60),
+          const Text(
+            'Tukar Point dengan Diskon',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF4CAF50),
             ),
           ),
+          const SizedBox(height: 16),
+          const Text(
+            'Belanja, kumpulkan JKoin, dan nikmati diskon jenang jagung!',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 16,
+              color: Colors.black87,
+            ),
+          ),
+          const Spacer(flex: 2),
+          const SizedBox(height: 25),
         ],
       ),
     );

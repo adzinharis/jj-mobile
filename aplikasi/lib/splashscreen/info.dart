@@ -1,114 +1,115 @@
 import 'package:flutter/material.dart';
-import 'fitur1.dart'; 
+import 'fitur1.dart';
+import 'fitur2.dart';
+import 'fitur3.dart';
+class InfoPage extends StatefulWidget {
+  const InfoPage({Key? key}) : super(key: key);
 
-class InfoPage extends StatelessWidget {
-  const InfoPage({super.key});
+  @override
+  State<InfoPage> createState() => _InfoPageState();
+}
+
+class _InfoPageState extends State<InfoPage> {
+  final PageController _pageController = PageController();
+  int _currentPage = 0; // buat indikator aktif
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 254, 254),
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const SizedBox(height: 20),
-              // Logo
-              Image.asset(
-                'images/image-for-Logo/logo.png', 
-                height: 150,
-              ),
-              // Text
-              Column(
-                children: const [
-                  SizedBox(height: 24),
-                  Text(
-                    'Selamat Datang di\nAplikasi JJ Mobile',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      color: Color(0xFF4CAF50), 
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                onPageChanged: (index) {
+                  setState(() {
+                    _currentPage = index;
+                  });
+                },
+                children: [
+                  _buildPageContent(
+                    image: 'images/image-for-logo/logo.png',
+                    title: 'Selamat Datang di\nAplikasi JJ Mobile',
+                    subtitle: 'Platform belanja jenang jagung dari\nUMKM lokal. Enak, mudah, dan praktis.',
                   ),
-                  SizedBox(height: 16),
-                  Text(
-                    'Platform belanja jenang jagung dari\nUMKM lokal. Enak, mudah, dan praktis.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      color: Colors.black,
-                      fontSize: 14,
-                    ),
-                  ),
+                  const Fitur1Page(), // halaman kedua
+                  const Fitur2Page(),
+                  const Fitur3Page(),
+                  // kalau mau tambah halaman lagi, tambahkan di sini
                 ],
               ),
-              // Tombol Next + Indicator
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Indicator
-                    Row(
-                      children: [
-                        Container(
-                          height: 8,
-                          width: 24,
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Container(
-                          height: 8,
-                          width: 8,
-                          decoration: BoxDecoration(
-                            color: Colors.green.withOpacity(0.3),
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Container(
-                          height: 8,
-                          width: 8,
-                          decoration: BoxDecoration(
-                            color: Colors.green.withOpacity(0.3),
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                      ],
-                    ),
-                    // Tombol Next
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Feature1Screen()),
-                        );
-                      },
-                      child: Container(
-                        height: 48,
-                        width: 48,
-                        decoration: const BoxDecoration(
-                          color: Colors.green,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
+            ),
+            const SizedBox(height: 20),
+            _buildIndicator(),
+            const SizedBox(height: 20),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPageContent({
+    required String image,
+    required String title,
+    required String subtitle,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 35),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            image,
+            width: 150,
+            height: 150,
+          ),
+          const SizedBox(height: 60),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF4CAF50),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            subtitle,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 16,
+              color: Colors.black87,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIndicator() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        4, // jumlah halaman di PageView
+        (index) => AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          margin: const EdgeInsets.symmetric(horizontal: 4),
+          width: _currentPage == index ? 43 : 20,
+          height: 5,
+          decoration: BoxDecoration(
+            color: _currentPage == index ? const Color(0xFF4CAF50) : Colors.grey[300],
+            borderRadius: BorderRadius.circular(4),
           ),
         ),
       ),
