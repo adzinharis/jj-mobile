@@ -19,7 +19,7 @@ class Fitur1Page extends StatelessWidget {
           ),
           const SizedBox(height: 50),
           const Text(
-            'Tetap Terhubung,\nKapan Saja',
+            'Tetap Terhubung\nKapan Saja',
             textAlign: TextAlign.left,
             style: TextStyle(
               fontFamily: 'Poppins',

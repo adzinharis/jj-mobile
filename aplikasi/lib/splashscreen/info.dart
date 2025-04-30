@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'fitur1.dart';
 import 'fitur2.dart';
 import 'fitur3.dart';
+
 class InfoPage extends StatefulWidget {
   const InfoPage({super.key});
 
@@ -11,7 +12,7 @@ class InfoPage extends StatefulWidget {
 
 class _InfoPageState extends State<InfoPage> {
   final PageController _pageController = PageController();
-  int _currentPage = 0; // buat indikator aktif
+  int _currentPage = 0;
 
   @override
   void dispose() {
@@ -40,13 +41,41 @@ class _InfoPageState extends State<InfoPage> {
                     title: 'Selamat Datang di\nAplikasi JJ Mobile',
                     subtitle: 'Platform belanja jenang jagung dari\nUMKM lokal. Enak, mudah, dan praktis.',
                   ),
-                  const Fitur1Page(), // halaman kedua
+                  const Fitur1Page(),
                   const Fitur2Page(),
                   const Fitur3Page(),
-                  // kalau mau tambah halaman lagi, tambahkan di sini
                 ],
               ),
             ),
+            const SizedBox(height: 20),
+            // Tombol next
+            if (_currentPage < 3)
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 30.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      _pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFF4CAF50),
+                      ),
+                      child: const Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             const SizedBox(height: 20),
             _buildIndicator(),
             const SizedBox(height: 20),
@@ -101,7 +130,7 @@ class _InfoPageState extends State<InfoPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
-        4, // jumlah halaman di PageView
+        4,
         (index) => AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           margin: const EdgeInsets.symmetric(horizontal: 4),

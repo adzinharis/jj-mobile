@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'info.dart'; 
+import 'package:audioplayers/audioplayers.dart'; // Import audioplayers baru
+import 'info.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -10,17 +11,17 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   bool _showLogo = false;
+  final AudioPlayer _audioPlayer = AudioPlayer(); // Instance AudioPlayer
 
   @override
   void initState() {
     super.initState();
-    // Tampil teks selama 2 detik
+    _playSplashSound(); // Play sound saat load
     Future.delayed(const Duration(seconds: 4), () {
       setState(() {
         _showLogo = true;
       });
 
-      // Setelah logo muncul, delay lagi 2 detik, lalu pindah ke InfoPage
       Future.delayed(const Duration(seconds: 2), () {
         Navigator.pushReplacement(
           context,
@@ -28,6 +29,18 @@ class _WelcomePageState extends State<WelcomePage> {
         );
       });
     });
+  }
+
+  // Fungsi play audio splash
+  void _playSplashSound() async {
+     await _audioPlayer.setVolume(1.0); // Set volume ke maksimal
+    await _audioPlayer.play(AssetSource('sounds/backsound_arbiv.mp3'));
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose(); // Pastikan dispose player
+    super.dispose();
   }
 
   @override
@@ -43,12 +56,11 @@ class _WelcomePageState extends State<WelcomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'images/image-for-logo/logo.png', // Pastikan logo tersedia di assets
+                      'images/image-for-logo/logo.png',
                       width: 150,
                       height: 150,
                     ),
                     const SizedBox(height: 10),
-                   
                   ],
                 )
               : Text(
