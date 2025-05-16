@@ -20,15 +20,39 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/image-for-logo/logo.png
-    - images/image-for-fitur1/fitur1.png
-    - images/image-for-fitur2/fitur2.png
-    - images/image-for-fitur3/fitur3.png
-    - images/image-for-login/eye-on.png
-    - images/image-for-login/eye-off.png
-    - images/image-for-login/logo-google.png
-    - images/image-for-login/logo-fb.png
+    - assets/images/logo.png
+    - assets/images/fitur1.png
+    - assets/images/fitur2.png
+    - assets/images/fitur3.png
+    - assets/images/eye-on.png
+    - assets/images/eye-off.png
+    - assets/images/logo-google.png
+    - assets/images/logo-fb.png
+    - assets/images/admin.png
+    - assets/images/reseller.png
+    - assets/images/susu-jj.png
+    - assets/images/profile.png
+    - assets/images/jj3.png
+    - assets/images/jj4.png
+    - assets/images/pict-2.png
+    - assets/images/pict-3.png
+    - assets/images/pict-1.png
+    - assets/images/pp.png
+    - assets/images/world_map.png
+    - assets/icons/cart.png
+    - assets/icons/home.png
+    - assets/icons/chat.png
+    - assets/icons/user.png
+    - assets/icons/back.png
+    - assets/icons/setting.png
+    - assets/icons/order.png
+    - assets/icons/info.png
+    - assets/icons/logout.png
+    - assets/icons/next.png
+    - assets/icons/send.png
+    - assets/icons/notification.png
     - assets/sounds/backsound_arbiv.mp3
+    - assets/sounds/sound.mp3
 
   fonts:
     - family: Poppins

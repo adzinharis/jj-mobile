@@ -145,7 +145,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             GestureDetector(
                               onTap: () {},
                               child: Image.asset(
-                                'images/image-for-login/logo-google.png',
+                                'assets/images/logo-google.png',
                                 width: 40,
                                 height: 40,
                               ),
@@ -154,7 +154,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             GestureDetector(
                               onTap: () {},
                               child: Image.asset(
-                                'images/image-for-login/logo-fb.png',
+                                'assets/images/logo-fb.png',
                                 width: 40,
                                 height: 40,
                               ),

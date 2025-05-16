@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart'; // Import audioplayers baru
+import 'package:audioplayers/audioplayers.dart'; 
 import 'info.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -11,35 +11,42 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   bool _showLogo = false;
-  final AudioPlayer _audioPlayer = AudioPlayer(); // Instance AudioPlayer
+  final AudioPlayer _audioPlayer = AudioPlayer();
 
   @override
   void initState() {
     super.initState();
-    _playSplashSound(); // Play sound saat load
-    Future.delayed(const Duration(seconds: 4), () {
-      setState(() {
-        _showLogo = true;
-      });
-
-      Future.delayed(const Duration(seconds: 2), () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const InfoPage()),
-        );
-      });
-    });
+    _playSplashSound();
+    _startSplashSequence();
   }
 
-  // Fungsi play audio splash
+  // Fungsi untuk memainkan backsound splash
   void _playSplashSound() async {
-     await _audioPlayer.setVolume(1.0); // Set volume ke maksimal
-    await _audioPlayer.play(AssetSource('sounds/backsound_arbiv.mp3'));
+    await _audioPlayer.setVolume(1.0);
+    await _audioPlayer.play(AssetSource('sounds/sound.mp3'));
+  }
+
+  // Fungsi untuk menampilkan logo dan navigasi
+  void _startSplashSequence() async {
+    await Future.delayed(const Duration(seconds: 4));
+    if (!mounted) return;
+
+    setState(() {
+      _showLogo = true;
+    });
+
+    await Future.delayed(const Duration(seconds: 2));
+    if (!mounted) return;
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const InfoPage()),
+    );
   }
 
   @override
   void dispose() {
-    _audioPlayer.dispose(); // Pastikan dispose player
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -56,7 +63,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'images/image-for-logo/logo.png',
+                      'assets/images/logo.png',
                       width: 150,
                       height: 150,
                     ),

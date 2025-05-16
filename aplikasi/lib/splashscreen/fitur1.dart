@@ -13,7 +13,7 @@ class Fitur1Page extends StatelessWidget {
           const Spacer(flex: 2),
           Center(
             child: Image.asset(
-              'images/image-for-fitur1/fitur1.png',
+              'assets/images/fitur1.png',
               width: 200, // konsisten
             ),
           ),

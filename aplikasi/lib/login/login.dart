@@ -1,5 +1,7 @@
+import 'package:aplikasi/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:aplikasi/signup/signup.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -46,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         CircleAvatar(
                           backgroundImage:
-                              AssetImage('images/image-for-logo/logo.png'),
+                              AssetImage('assets/images/logo.png'),
                           radius: 40,
                           backgroundColor: Colors.white,
                         ),
@@ -86,11 +88,11 @@ class _LoginPageState extends State<LoginPage> {
                                   suffixIcon: IconButton(
                                     icon: _obscureText
                                         ? Image.asset(
-                                            'images/image-for-login/eye-on.png',
+                                            'assets/images/eye-on.png',
                                             width: 24,
                                             height: 24)
                                         : Image.asset(
-                                            'images/image-for-login/eye-off.png',
+                                            'assets/images/eye-off.png',
                                             width: 24,
                                             height: 24),
                                     onPressed: _togglePasswordVisibility,
@@ -118,7 +120,14 @@ class _LoginPageState extends State<LoginPage> {
                                 width: double.infinity,
                                 height: 45,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    // Navigasi ke dashboard
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => MainPage()),
+                                    );
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xFFC5FF9E),
                                     shape: RoundedRectangleBorder(
@@ -139,15 +148,13 @@ class _LoginPageState extends State<LoginPage> {
                               const SizedBox(height: 20),
                               Row(
                                 children: [
-                                  Expanded(
-                                      child: Divider(color: Colors.grey)),
+                                  Expanded(child: Divider(color: Colors.grey)),
                                   Container(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8),
                                     child: const Text('atau'),
                                   ),
-                                  Expanded(
-                                      child: Divider(color: Colors.grey)),
+                                  Expanded(child: Divider(color: Colors.grey)),
                                 ],
                               ),
                               const SizedBox(height: 20),
@@ -157,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                                   GestureDetector(
                                     onTap: () {},
                                     child: Image.asset(
-                                      'images/image-for-login/logo-google.png',
+                                      'assets/images/logo-google.png',
                                       width: 40,
                                       height: 40,
                                     ),
@@ -166,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                                   GestureDetector(
                                     onTap: () {},
                                     child: Image.asset(
-                                      'images/image-for-login/logo-fb.png',
+                                      'assets/images/logo-fb.png',
                                       width: 40,
                                       height: 40,
                                     ),

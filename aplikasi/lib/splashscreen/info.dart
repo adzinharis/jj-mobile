@@ -37,7 +37,7 @@ class _InfoPageState extends State<InfoPage> {
                 },
                 children: [
                   _buildPageContent(
-                    image: 'images/image-for-logo/logo.png',
+                    image: 'assets/images/logo.png',
                     title: 'Selamat Datang di\nAplikasi JJ Mobile',
                     subtitle: 'Platform belanja jenang jagung dari\nUMKM lokal. Enak, mudah, dan praktis.',
                   ),
