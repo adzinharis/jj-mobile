@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'edit_address.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -13,6 +13,7 @@ class AlamatSayaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
        appBar: AppBar(
         leading: IconButton(
           icon: Image.asset(
@@ -62,7 +63,13 @@ class AlamatSayaPage extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                  Navigator.push(
+                  context,
+                MaterialPageRoute(builder: (context) => UbahAlamatPage()),
+                );
+                },
+
                   style: TextButton.styleFrom(
                     backgroundColor: const Color(0xFF20A110),
                     padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),

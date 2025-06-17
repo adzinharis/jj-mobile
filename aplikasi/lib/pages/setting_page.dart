@@ -1,6 +1,6 @@
 import 'package:aplikasi/pages/my_address.dart';
 import 'package:flutter/material.dart';
-
+import 'my_account.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -68,8 +68,11 @@ class _SettingPageState extends State<SettingPage> {
                 leading: const Icon(Icons.person_outline),
                 title: const Text("Akun Saya"),
                 trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-                onTap: () {
-                
+                 onTap: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AkunSayaPage()),
+              );
               },
               ),
               const Divider(),

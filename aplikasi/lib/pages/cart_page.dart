@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'checkout_page.dart';
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
@@ -22,12 +22,12 @@ class _CartPageState extends State<CartPage> {
     {
       'name': 'Balok JJ',
       'price': 10000,
-      'image': 'assets/images/pict-1.png',
+      'image': 'assets/images/pict-2.png',
     },
     {
       'name': 'Jelly Jagung',
       'price': 15000,
-      'image': 'assets/images/pict-1.png',
+      'image': 'assets/images/pict-3.png',
     },
   ];
 
@@ -52,12 +52,8 @@ class _CartPageState extends State<CartPage> {
         
         color: Colors.black,
       ),
-      ),
-
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        elevation: 0,
-        foregroundColor: Colors.black,
-      ),
+      ),   
+    ),
       body: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -159,11 +155,11 @@ class _CartPageState extends State<CartPage> {
               );
             }),
 
-            // Checkbox JKoin dan Semua
+            // Checkbox 
             Row(
               children: [
                
-                const SizedBox(width: 20),
+                const SizedBox(width: 10),
                 Checkbox(
                   value: selectAll,
                   onChanged: (value) => toggleSelectAll(value!),
@@ -172,17 +168,22 @@ class _CartPageState extends State<CartPage> {
                 const Text('Semua'),
               ],
             ),
+           
+          const SizedBox(height: 20),
 
             // Tombol Checkout
             Align(
-              alignment: Alignment.centerRight,
+              alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: () {
-                  // Proses checkout
-                },
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CheckoutPage()),
+                );
+              },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF20A110),
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 130, vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),

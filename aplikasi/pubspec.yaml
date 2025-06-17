@@ -40,6 +40,8 @@ flutter:
     - assets/images/pp.png
     - assets/images/world_map.png
     - assets/icons/cart.png
+    - assets/icons/delivery.png
+    - assets/icons/pickup.png
     - assets/icons/home.png
     - assets/icons/chat.png
     - assets/icons/user.png
@@ -51,6 +53,17 @@ flutter:
     - assets/icons/next.png
     - assets/icons/send.png
     - assets/icons/notification.png
+    - assets/icons/tunai.png
+    - assets/icons/transfer.png
+    - assets/icons/e-wallet.png
+    - assets/icons/dana.png
+    - assets/icons/ovo.png
+    - assets/icons/gopay.png
+    - assets/icons/linkaja.png
+    - assets/icons/mandiri.png
+    - assets/icons/bri.png
+    - assets/icons/bni.png
+    - assets/icons/bca.png
     - assets/sounds/backsound_arbiv.mp3
     - assets/sounds/sound.mp3
 

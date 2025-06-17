@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:aplikasi/login/login.dart'; // Ganti sesuai path file login kamu
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -8,188 +9,176 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool _obscurePassword = true;
-
-  void _togglePasswordVisibility() {
-    setState(() {
-      _obscurePassword = !_obscurePassword;
-    });
-  }
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFC5FF9E),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                const Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ],
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          // Background hijau di atas
+          Container(
+            height: size.height * 0.32,
+            decoration: const BoxDecoration(
+              color: Color(0xFF28A745),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
             ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: Container(
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(80),
+          ),
+
+          // Isi konten scrollable
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                children: [
+                  const SizedBox(height: 60),
+
+                  // Judul di atas card
+                  const Center(
+                    child: Text(
+                      'Jenang Jagung\nMobile',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        height: 1.4,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: SingleChildScrollView(
+
+                  const SizedBox(height: 24),
+
+                  // Card putih untuk form
+                  Container(
+                    padding: const EdgeInsets.all(24),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(32),
+                      boxShadow: [
+                        BoxShadow(
+                          // ignore: deprecated_member_use
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
                     child: Column(
                       children: [
-                        const SizedBox(height: 150),
-                        TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Nama',
-                            prefixIcon: const Icon(Icons.person_outline),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                          ),
+                        _buildInputField(
+                          icon: Icons.person,
+                          hintText: 'Nama',
                         ),
-                        const SizedBox(height: 15),
-                        TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Email',
-                            prefixIcon: const Icon(Icons.email_outlined),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                          ),
+                        const SizedBox(height: 16),
+                        _buildInputField(
+                          icon: Icons.email,
+                          hintText: 'Email',
                         ),
-                        const SizedBox(height: 15),
-                        TextField(
-                          obscureText: _obscurePassword,
-                          decoration: InputDecoration(
-                            hintText: 'Kata Sandi',
-                            prefixIcon: const Icon(Icons.lock_outline),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscurePassword
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              ),
-                              onPressed: _togglePasswordVisibility,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                          ),
-                          
+                        const SizedBox(height: 16),
+                        _buildInputField(
+                          icon: Icons.lock,
+                          hintText: 'Kata Sandi',
+                          isPassword: true,
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 16),
+                        _buildInputField(
+                          icon: Icons.phone,
+                          hintText: 'No Handphone',
+                        ),
+                        const SizedBox(height: 16),
+                        _buildInputField(
+                          icon: Icons.location_on,
+                          hintText: 'Alamat',
+                        ),
+                        const SizedBox(height: 24),
                         SizedBox(
                           width: double.infinity,
-                          height: 45,
+                          height: 48,
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFC5FF9E),
+                              backgroundColor: const Color(0xFF28A745),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
+                                borderRadius: BorderRadius.circular(24),
                               ),
                             ),
                             child: const Text(
                               'Sign Up',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: TextStyle(fontSize: 16, color: Colors.white),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 30),
-                        Row(
-                          children: [
-                            Expanded(child: Divider(color: Colors.grey)),
-                            Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
-                              child: const Text('atau'),
-                            ),
-                            Expanded(child: Divider(color: Colors.grey)),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              child: Image.asset(
-                                'assets/images/logo-google.png',
-                                width: 40,
-                                height: 40,
-                              ),
-                            ),
-                            const SizedBox(width: 20),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Image.asset(
-                                'assets/images/logo-fb.png',
-                                width: 40,
-                                height: 40,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text('Sudah punya akun? '),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text(
-                                'Login',
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Poppins',
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
                       ],
                     ),
                   ),
-                ),
+
+                  const SizedBox(height: 24),
+
+                  // Teks "Belum punya akun?" di luar card
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Belum punya akun? '),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => const LoginPage()),
+                          );
+                        },
+                        child: const Text(
+                          'Sign In',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 24),
+                ],
               ),
             ),
-          ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInputField({
+    required IconData icon,
+    required String hintText,
+    bool isPassword = false,
+  }) {
+    return TextField(
+      obscureText: isPassword ? _obscureText : false,
+      decoration: InputDecoration(
+        hintText: hintText,
+        prefixIcon: Icon(icon),
+        suffixIcon: isPassword
+            ? IconButton(
+                icon: Icon(
+                    _obscureText ? Icons.visibility_off : Icons.visibility),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              )
+            : null,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(24),
         ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
       ),
     );
   }

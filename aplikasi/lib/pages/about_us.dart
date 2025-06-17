@@ -15,7 +15,7 @@ class AboutUsPage extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               decoration: const BoxDecoration(
-                color: Color(0xFFA6F1A6), 
+                color: Color(0xFF20A110),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(32),
                   bottomRight: Radius.circular(32),
@@ -31,6 +31,7 @@ class AboutUsPage extends StatelessWidget {
                     'assets/icons/back.png', 
                     width: 20,
                     height: 20,
+                    color: Color.fromARGB(255, 255, 255, 255),
                     ),
                     onPressed: () {
                     Navigator.pop(context);
@@ -42,7 +43,8 @@ class AboutUsPage extends StatelessWidget {
                         'Tentang Kami',
                         style: TextStyle(
                           fontSize: 20,
-                          fontFamily: 'Poppins'
+                          fontFamily: 'Poppins',
+                          color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                     ],
@@ -66,6 +68,7 @@ class AboutUsPage extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
+                      color: Color.fromARGB(255, 255, 255, 255),
                     ),
                   )
                 ],

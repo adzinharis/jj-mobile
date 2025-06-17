@@ -5,17 +5,17 @@ class PesananPage extends StatelessWidget {
 
   final List<Map<String, String>> pesananList = const [
     {
-      'produk': 'Jenang Jagung Rasa Original',
+      'produk': 'Jenang Jagung',
       'status': 'Sedang Diproses',
       'tanggal': '10 Mei 2025',
     },
     {
-      'produk': 'Jenang Jagung Rasa Coklat',
+      'produk': 'Jenang Jagung',
       'status': 'Dikirim',
       'tanggal': '8 Mei 2025',
     },
     {
-      'produk': 'Jenang Jagung Rasa Durian',
+      'produk': 'Jenang Jagung',
       'status': 'Selesai',
       'tanggal': '3 Mei 2025',
     },
@@ -24,6 +24,7 @@ class PesananPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         leading:  IconButton(
